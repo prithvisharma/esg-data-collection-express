@@ -1,4 +1,6 @@
 const bcrypt = require("bcrypt")
+const moment = require("moment")
+
 const { database } = require("../../database/database-client")
 
 const bcryptSaltRounds = 10
@@ -21,6 +23,8 @@ const signup = async (req, res) => {
         fullName: fullName,
         phone: phone,
         email: email,
+        createdAt: moment().toISOString(true),
+        updatedAt: moment().toISOString(true),
     })
 
     return res.json({
