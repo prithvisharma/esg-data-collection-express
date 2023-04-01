@@ -2,7 +2,8 @@ const MongoClient = require("mongodb").MongoClient
 const MONGO_DB_URL = process.env.MONGO_DB_URL
 
 const database = {
-    test: null,
+    user: null,
+    report: null,
 }
 
 function connectDb(callback) {
@@ -13,7 +14,8 @@ function connectDb(callback) {
             return callback(err)
         }
         const dbclient = mongoClient.db("esg-data-collection-db")
-        database.test = dbclient.collection("test")
+        database.user = dbclient.collection("user")
+        database.report = dbclient.collection("report")
         console.log("mongo db connected")
         return callback()
     })
