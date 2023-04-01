@@ -1,0 +1,28 @@
+@token = eyJhbGciOiJSUzUxMiJ9.eyJqd3RQYXlsb2FkIjp7ImlzcyI6IkVTRy1DT0xMRUNUSU9OUyIsInVzZXJuYW1lIjoicHJpdGh2aUBnbWFpbC5jb20ifSwiaWF0IjoxNjgwMzQxNDAzLCJleHAiOjE2ODAzODQ2MDMsImF1ZCI6ImF1ZGllbmNlIn0.hAx8WkC3KbWgqEOmVrX6RxqPV1Fpzx0yaRIvMU7ziZaHudxWX7AkcGuGsGdbTqgi33x2EX-nyUlEojbI3qFxOkj8Lo41YyMXkt7zAxagVh4VXbgHiHVjgdcHNY8VY5Aww0Lf88l14gRQ1lPxlsvnZ_OU1p-wdKPfS_PNfF22ShXm0jwi_YQHYenUuIOKIa5Ts7SD2sYJm32RQ3Yjo1ztWnRhj6VhZ2Ab8D-IeFy0tRdrCPI0J2RdncBVjOrn4ST7e8fhuqPAwb2kLHWPhIDdvkCdC_dd1zX7E42QZE3Dke64mbqAp6_IznzhkzZoeyoL7a43ZRlG1-9dAUdCz0fr4Q
+
+POST http://localhost:5000/esg-collect/login
+content-type: application/json
+
+{
+    "username": "prithvi@gmail.com",
+    "password": "ci4hlozhab"
+}
+
+###
+
+POST http://localhost:5000/esg-collect/user/signup
+content-type: application/json
+
+{
+    "fullName": "Prithvi Sharma",
+    "phone": "9000000001",
+    "email": "prithvi@gmail.com"
+}
+
+###
+
+GET http://localhost:5000/esg-collect/user/prithvi@gmail.com
+Authorization: Bearer {{token}}
+content-type: application/json
+
+###
