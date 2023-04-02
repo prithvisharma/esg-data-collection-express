@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJSUzUxMiJ9.eyJqd3RQYXlsb2FkIjp7ImlzcyI6IkVTRy1DT0xMRUNUSU9OUyIsInVzZXJuYW1lIjoicHJpdGh2aUBnbWFpbC5jb20ifSwiaWF0IjoxNjgwMzQxNDAzLCJleHAiOjE2ODAzODQ2MDMsImF1ZCI6ImF1ZGllbmNlIn0.hAx8WkC3KbWgqEOmVrX6RxqPV1Fpzx0yaRIvMU7ziZaHudxWX7AkcGuGsGdbTqgi33x2EX-nyUlEojbI3qFxOkj8Lo41YyMXkt7zAxagVh4VXbgHiHVjgdcHNY8VY5Aww0Lf88l14gRQ1lPxlsvnZ_OU1p-wdKPfS_PNfF22ShXm0jwi_YQHYenUuIOKIa5Ts7SD2sYJm32RQ3Yjo1ztWnRhj6VhZ2Ab8D-IeFy0tRdrCPI0J2RdncBVjOrn4ST7e8fhuqPAwb2kLHWPhIDdvkCdC_dd1zX7E42QZE3Dke64mbqAp6_IznzhkzZoeyoL7a43ZRlG1-9dAUdCz0fr4Q
+@token = eyJhbGciOiJSUzUxMiJ9.eyJqd3RQYXlsb2FkIjp7ImlzcyI6IkVTRy1DT0xMRUNUSU9OUyIsInVzZXJuYW1lIjoicHJpdGh2aUBnbWFpbC5jb20ifSwiaWF0IjoxNjgwNDU1MjAzLCJleHAiOjE2ODA0OTg0MDMsImF1ZCI6ImF1ZGllbmNlIn0.AQFeKdECOQP7VyDyU-YuEyvSxVU4FZsLbYRrV4PCTByGSDhCxbEBNRVbqc4nEieBQX0wOfE-HpzXrqfr2aiboCH7yBRvRWT6pW1qYvqKHMjf_h8nV2KYlnUn38WrI9tcEY0Bz2qSHVcBNL72AtxRpalPRIMWqWx3u0k7_nJJLasKeDj3QfMoW59nY_OE8duq9dSSEAEvAPT4MTMPW9Oyo0NeNvN-PmqtDHm5r-z0uKcsqMSIW7j5Bl7HbtvBVyS-vEmPgLzI5qG9dNATLPQBi5sM0wPY6MlRUtgNJrSIvS87X-EtbrkctDG-BNaYEQ7gLbvfK3_0uHUQKkafflgLJA
 
 POST http://localhost:5000/esg-collect/login
 content-type: application/json
@@ -10,7 +10,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:5000/esg-collect/user/signup
+POST http://localhost:5002/esg-collect/user/signup
 content-type: application/json
 
 {
@@ -23,6 +23,50 @@ content-type: application/json
 
 GET http://localhost:5000/esg-collect/user/prithvi@gmail.com
 Authorization: Bearer {{token}}
+
+###
+
+POST http://localhost:5000/esg-collect/report/
+Authorization: Bearer {{token}}
 content-type: application/json
+
+{
+    "reportId": "8200dedd-848a-4645-be9a-926e4ba396ea",
+    "questionId": "Q5",
+    "answer": {
+        "permanentEmployees": {
+            "yesNo": "YES",
+            "details": "My details 1"
+        },
+        "otherEmployees": {
+            "yesNo": "no",
+            "details": "My details 2"
+        },
+        "permanentWorkers": {
+            "yesNo": "YES",
+            "details": "My details 3"
+        },
+        "otherWorkers": {
+            "yesNo": "YES",
+            "details": "My details 4"
+        }
+    }
+
+}
+
+###
+
+GET http://localhost:5000/esg-collect/report/by-report-id/3c0ae9c6-1f32-4ed7-83cc-f71f6f738477
+Authorization: Bearer {{token}}
+
+###
+
+GET http://localhost:5000/esg-collect/report/by-username/prithvix@gmail.com
+Authorization: Bearer {{token}}
+
+###
+
+GET http://localhost:5000/esg-collect/report/questions
+Authorization: Bearer {{token}}
 
 ###
