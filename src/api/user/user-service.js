@@ -50,7 +50,9 @@ const getUser = async (req, res) => {
     const user = await database.user.findOne({ username })
 
     if (!user) {
-        return res.status(400).json({ error: ["user does not exist"] })
+        return res
+            .status(400)
+            .json({ status: false, error: ["user does not exist"] })
     }
 
     user.password = "**********"
