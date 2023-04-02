@@ -1,7 +1,91 @@
-const postReport = (req, res) => {}
-const getReportById = (req, res) => {}
-const getReportIdsByUsername = (req, res) => {}
-const getReportQuestions = (req, res) => {}
+const moment = require("moment")
+
+const { database } = require("../../database/database-client")
+const { validatePostReportRequestData } = require("./report-helper")
+
+const postReport = async (req, res) => {
+    let reportId = req.body.reportId
+    const { questionId, answer } = req.body
+    const username = req.username
+
+    const validatePostReportResult = await validatePostReportRequestData(
+        reportId,
+        questionId,
+        answer
+    )
+
+    if (!validatePostReportResult.status) {
+        return res
+            .status(400)
+            .json({ status: false, error: validatePostReportResult.error })
+    }
+
+    const report = validatePostReportResult.report
+    report.data[questionId.toUpperCase()] = answer
+    report.username = username
+    report.updatedAt = moment().toISOString(true)
+
+    const dbResult = await database.report.updateOne(
+        { reportId },
+        { $set: report },
+        { upsert: true }
+    )
+
+    if (dbResult.acknowledged) {
+        return res.json({
+            status: true,
+        })
+    } else {
+        return res.json({
+            status: false,
+            error: ["failed to save data"],
+            dbReponse: dbResult,
+        })
+    }
+}
+
+const getReportById = async (req, res) => {
+    const reportId = req.params.reportId
+
+    const report = await database.report.findOne({ reportId })
+
+    if (!report) {
+        return res
+            .status(400)
+            .json({ status: false, error: ["report not found"] })
+    }
+
+    return res.json({
+        status: true,
+        data: report,
+    })
+}
+
+const getReportIdsByUsername = async (req, res) => {
+    const username = req.params.username
+
+    const reportIds = (await database.report.find({ username }).toArray()).map(
+        (report) => report.reportId
+    )
+
+    if (reportIds.length === 0) {
+        return res
+            .status(400)
+            .json({ status: false, error: ["no reports for provided user"] })
+    }
+
+    return res.json({
+        status: true,
+        data: reportIds,
+    })
+}
+
+const getReportQuestions = (req, res) => {
+    return res.json({
+        status: true,
+        data: undefined,
+    })
+}
 
 module.exports = {
     postReport,
