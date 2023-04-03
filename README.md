@@ -32,6 +32,6 @@
     1. `/esg-collect/report/upload-attachments/:questionId/:reportId` : Requires `questionId` & `reportId` to attached the uploaded files. Saves attachments as array of filename & filebuffer for given questionId of the report.
     1. `/esg-collect/report/by-report-id/:reportId` : Requires `reportId` in `req.params`, returns respective report from the database.
     1. `/esg-collect/report/by-username/:username` : Requires `username` in `req.params`, returns reports linked to respective user from the database.
-    1. `/esg-collect/report/question` : (UNFINISHED) Expected to return questions that are supposed to be answered.
+    1. `/esg-collect/report/question` : Returns questions and expected sample answers.
 
 Endpoints can be tested using `apis.http` file.
