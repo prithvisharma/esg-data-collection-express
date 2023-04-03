@@ -71,6 +71,12 @@ const uploadAttachments = async (req, res) => {
     if (!report.data[questionId].attachments)
         report.data[questionId].attachments = []
 
+    if (req.files.length === 0) {
+        return res
+            .status(400)
+            .json({ status: false, error: ["no files uploaded"] })
+    }
+
     req.files.forEach((file) => {
         const fileName = file.originalname
         const fileBuffer = file.buffer
