@@ -70,4 +70,56 @@ async function validatePostReportRequestData(reportId, questionId, answer) {
     }
 }
 
-module.exports = { validatePostReportRequestData }
+function computeServerSideInfo(questionId, answer) {
+    switch (questionId.toUpperCase()) {
+        case "Q2":
+            answer.national["total"] =
+                answer.national.numberOfPlants + answer.national.numberOfOffices
+            answer.international["total"] =
+                answer.international.numberOfPlants +
+                answer.international.numberOfOffices
+            return answer
+        case "Q4":
+            function computeFinalTotalFields(computeFor) {
+                const permanentProperty = `permanent${computeFor}`
+                const otherProperty = `other${computeFor}`
+                answer.all[`total${computeFor}`] = {
+                    total:
+                        answer.all[permanentProperty].total +
+                        answer.all[otherProperty].total,
+                    maleNumber:
+                        answer.all[permanentProperty].maleNumber +
+                        answer.all[otherProperty].maleNumber,
+                    femaleNumber:
+                        answer.all[permanentProperty].femaleNumber +
+                        answer.all[otherProperty].femaleNumber,
+                }
+            }
+            computeFinalTotalFields("Employees")
+            computeFinalTotalFields("Workers")
+            function computePercentageField(computeFor) {
+                function calculatePercentage(number) {
+                    return +(
+                        (number / answer.all[computeFor].total) *
+                        100
+                    ).toFixed(2)
+                }
+                answer.all[computeFor]["malePercentage"] = calculatePercentage(
+                    answer.all[computeFor].maleNumber
+                )
+                answer.all[computeFor]["femalePercentage"] =
+                    calculatePercentage(answer.all[computeFor].femaleNumber)
+            }
+            computePercentageField("permanentEmployees")
+            computePercentageField("otherEmployees")
+            computePercentageField("totalEmployees")
+            computePercentageField("permanentWorkers")
+            computePercentageField("otherWorkers")
+            computePercentageField("totalWorkers")
+            return answer
+        default:
+            return answer
+    }
+}
+
+module.exports = { validatePostReportRequestData, computeServerSideInfo }
