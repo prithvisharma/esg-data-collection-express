@@ -5,6 +5,7 @@ const {
     validatePostReportRequestData,
     computeServerSideInfo,
 } = require("./report-helper")
+const { SAMPLE_QUESTION_ANSWER } = require("./sample-question-answer")
 
 const postReport = async (req, res) => {
     let reportId = req.body.reportId
@@ -88,7 +89,7 @@ const getReportIdsByUsername = async (req, res) => {
 const getReportQuestions = (req, res) => {
     return res.json({
         status: true,
-        data: undefined,
+        data: SAMPLE_QUESTION_ANSWER,
     })
 }
 
