@@ -41,23 +41,38 @@
             "permanentEmployees": {
                 "total": 10,
                 "maleNumber": 5,
+                //malePercentage
                 "femaleNumber": 5
+                //femalePercentage
             },
             "otherEmployees": {
                 "total": 10,
                 "maleNumber": 5,
+                //malePercentage
                 "femaleNumber": 5
+                //femalePercentage
             },
             "permanentWorkers": {
                 "total": 10,
                 "maleNumber": 5,
+                //malePercentage
                 "femaleNumber": 5
+                //femalePercentage
             },
             "otherWorkers": {
                 "total": 10,
                 "maleNumber": 5,
+                //malePercentage
                 "femaleNumber": 5
+                //femalePercentage
             }
+            // "totalWorkers":{
+            //     "total": 10,
+            //     "maleNumber": 5,
+            //     "malePercentage": 10,
+            //     "femaleNumber": 5,
+            //     "femalePercentage": 10,
+            // }
         },
         "differentlyAbled": {
             "permanentEmployees": {
