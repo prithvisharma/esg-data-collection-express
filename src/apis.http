@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJSUzUxMiJ9.eyJqd3RQYXlsb2FkIjp7ImlzcyI6IkVTRy1DT0xMRUNUSU9OUyIsInVzZXJuYW1lIjoicHJpdGh2aUBnbWFpbC5jb20ifSwiaWF0IjoxNjgwNDU1MjAzLCJleHAiOjE2ODA0OTg0MDMsImF1ZCI6ImF1ZGllbmNlIn0.AQFeKdECOQP7VyDyU-YuEyvSxVU4FZsLbYRrV4PCTByGSDhCxbEBNRVbqc4nEieBQX0wOfE-HpzXrqfr2aiboCH7yBRvRWT6pW1qYvqKHMjf_h8nV2KYlnUn38WrI9tcEY0Bz2qSHVcBNL72AtxRpalPRIMWqWx3u0k7_nJJLasKeDj3QfMoW59nY_OE8duq9dSSEAEvAPT4MTMPW9Oyo0NeNvN-PmqtDHm5r-z0uKcsqMSIW7j5Bl7HbtvBVyS-vEmPgLzI5qG9dNATLPQBi5sM0wPY6MlRUtgNJrSIvS87X-EtbrkctDG-BNaYEQ7gLbvfK3_0uHUQKkafflgLJA
+@token = eyJhbGciOiJSUzUxMiJ9.eyJqd3RQYXlsb2FkIjp7ImlzcyI6IkVTRy1DT0xMRUNUSU9OUyIsInVzZXJuYW1lIjoicHJpdGh2aUBnbWFpbC5jb20ifSwiaWF0IjoxNjgwNTE0OTc3LCJleHAiOjE2ODA1NTgxNzcsImF1ZCI6ImF1ZGllbmNlIn0.wbBDlpF6eaXBbk-hvFebOIBDt0oRhdsbzPbXpvpEh3uuv5HujGlsfNlFhg6hp7a5tQff9y0o0q9_eqztuuJ5AKFjiL7Q2jZxtzgUcn51_jlEg75t0GHdnp398ZZez2UHyLoRPuNDs2Cea-A1BkXHelxd_bnlkebcEecfq5yOyd39W5uxrfmwLiVcIjR-_VixoN4k6myN1At-HfvFtrXTDqX2Sc9AuSQAm4OGo4pVjAObjPpZDg20qk8dIW1uHe6Vs6UqzK3wiQaeoxUzkDJd6pAPhC4r2JAYk20n6AHQ4ewtJft7E57d80S9wlbQQXvTOoa6vQDjcdatUNCDqXwFrA
 
 POST http://localhost:5000/esg-collect/login
 content-type: application/json
@@ -32,26 +32,53 @@ content-type: application/json
 
 {
     "reportId": "8200dedd-848a-4645-be9a-926e4ba396ea",
-    "questionId": "Q5",
+    "questionId": "Q4",
     "answer": {
-        "permanentEmployees": {
-            "yesNo": "YES",
-            "details": "My details 1"
+        "all": {
+            "permanentEmployees": {
+                "total": 90,
+                "maleNumber": 73,
+                "femaleNumber": 17
+            },
+            "otherEmployees": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "permanentWorkers": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "otherWorkers": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            }
         },
-        "otherEmployees": {
-            "yesNo": "no",
-            "details": "My details 2"
-        },
-        "permanentWorkers": {
-            "yesNo": "YES",
-            "details": "My details 3"
-        },
-        "otherWorkers": {
-            "yesNo": "YES",
-            "details": "My details 4"
+        "differentlyAbled": {
+            "permanentEmployees": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "otherEmployees": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "permanentWorkers": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "otherWorkers": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            }
         }
     }
-
 }
 
 ###
