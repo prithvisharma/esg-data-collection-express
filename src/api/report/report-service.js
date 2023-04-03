@@ -50,6 +50,52 @@ const postReport = async (req, res) => {
     }
 }
 
+const uploadAttachments = async (req, res) => {
+    const questionId = req.params.questionId
+    const reportId = req.params.reportId
+
+    const report = await database.report.findOne({ reportId })
+
+    if (!report) {
+        return res
+            .status(400)
+            .json({ status: false, error: ["report not found"] })
+    }
+
+    if (!Object.keys(SAMPLE_QUESTION_ANSWER).includes(questionId)) {
+        return res
+            .status(400)
+            .json({ status: false, error: ["invalid question id"] })
+    }
+
+    if (!report.data[questionId].attachments)
+        report.data[questionId].attachments = []
+
+    req.files.forEach((file) => {
+        const fileName = file.originalname
+        const fileBuffer = file.buffer
+        report.data[questionId].attachments.push(fileName, fileBuffer)
+    })
+
+    const dbResult = await database.report.updateOne(
+        { reportId },
+        { $set: report },
+        { upsert: true }
+    )
+
+    if (dbResult.acknowledged) {
+        return res.json({
+            status: true,
+        })
+    } else {
+        return res.json({
+            status: false,
+            error: ["failed to save data"],
+            dbReponse: dbResult,
+        })
+    }
+}
+
 const getReportById = async (req, res) => {
     const reportId = req.params.reportId
 
@@ -98,4 +144,5 @@ module.exports = {
     getReportById,
     getReportIdsByUsername,
     getReportQuestions,
+    uploadAttachments,
 }
