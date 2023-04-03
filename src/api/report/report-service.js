@@ -74,7 +74,7 @@ const uploadAttachments = async (req, res) => {
     req.files.forEach((file) => {
         const fileName = file.originalname
         const fileBuffer = file.buffer
-        report.data[questionId].attachments.push(fileName, fileBuffer)
+        report.data[questionId].attachments.push({ fileName, fileBuffer })
     })
 
     const dbResult = await database.report.updateOne(
