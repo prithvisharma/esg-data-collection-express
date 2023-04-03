@@ -1,0 +1,99 @@
+@token = eyJhbGciOiJSUzUxMiJ9.eyJqd3RQYXlsb2FkIjp7ImlzcyI6IkVTRy1DT0xMRUNUSU9OUyIsInVzZXJuYW1lIjoicHJpdGh2aUBnbWFpbC5jb20ifSwiaWF0IjoxNjgwNTE0OTc3LCJleHAiOjE2ODA1NTgxNzcsImF1ZCI6ImF1ZGllbmNlIn0.wbBDlpF6eaXBbk-hvFebOIBDt0oRhdsbzPbXpvpEh3uuv5HujGlsfNlFhg6hp7a5tQff9y0o0q9_eqztuuJ5AKFjiL7Q2jZxtzgUcn51_jlEg75t0GHdnp398ZZez2UHyLoRPuNDs2Cea-A1BkXHelxd_bnlkebcEecfq5yOyd39W5uxrfmwLiVcIjR-_VixoN4k6myN1At-HfvFtrXTDqX2Sc9AuSQAm4OGo4pVjAObjPpZDg20qk8dIW1uHe6Vs6UqzK3wiQaeoxUzkDJd6pAPhC4r2JAYk20n6AHQ4ewtJft7E57d80S9wlbQQXvTOoa6vQDjcdatUNCDqXwFrA
+
+POST http://localhost:5000/esg-collect/login
+content-type: application/json
+
+{
+    "username": "prithvi@gmail.com",
+    "password": "ci4hlozhab"
+}
+
+###
+
+POST http://localhost:5002/esg-collect/user/signup
+content-type: application/json
+
+{
+    "fullName": "Prithvi Sharma",
+    "phone": "9000000001",
+    "email": "prithvi@gmail.com"
+}
+
+###
+
+GET http://localhost:5000/esg-collect/user/prithvi@gmail.com
+Authorization: Bearer {{token}}
+
+###
+
+POST http://localhost:5000/esg-collect/report/
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "reportId": "8200dedd-848a-4645-be9a-926e4ba396ea",
+    "questionId": "Q4",
+    "answer": {
+        "all": {
+            "permanentEmployees": {
+                "total": 90,
+                "maleNumber": 73,
+                "femaleNumber": 17
+            },
+            "otherEmployees": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "permanentWorkers": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "otherWorkers": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            }
+        },
+        "differentlyAbled": {
+            "permanentEmployees": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "otherEmployees": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "permanentWorkers": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            },
+            "otherWorkers": {
+                "total": 10,
+                "maleNumber": 5,
+                "femaleNumber": 5
+            }
+        }
+    }
+}
+
+###
+
+GET http://localhost:5000/esg-collect/report/by-report-id/3c0ae9c6-1f32-4ed7-83cc-f71f6f738477
+Authorization: Bearer {{token}}
+
+###
+
+GET http://localhost:5000/esg-collect/report/by-username/prithvix@gmail.com
+Authorization: Bearer {{token}}
+
+###
+
+GET http://localhost:5000/esg-collect/report/questions
+Authorization: Bearer {{token}}
+
+###

@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "6427f8127e154aee681acb98"
+  },
+  "username": "prithvi@gmail.com",
+  "password": "$2b$10$Wzv4/n3DV.fmvXabYeAd5O8L79gxj.o.6M44QbPppB4VVYRSf3U.W",
+  "fullName": "Prithvi Sharma",
+  "phone": "9000000001",
+  "email": "prithvi@gmail.com"
+},{
+  "_id": {
+    "$oid": "642870c82bc17e533730f382"
+  },
+  "username": "test@gmail.com",
+  "password": "$2b$10$zaA4CjpAVcWmZ1fsT3SnMuHTT/weJpaPhqSBmEC0XW3WjPfpViDOW",
+  "fullName": "test user",
+  "phone": "9000000001",
+  "email": "test@gmail.com",
+  "createdAt": "2023-04-01T23:28:32.292+05:30",
+  "updatedAt": "2023-04-01T23:28:32.293+05:30"
+}]
