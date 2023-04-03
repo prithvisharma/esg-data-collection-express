@@ -1,6 +1,5 @@
-const SAMPLE_QUESTION_ANSWER = [
-    {
-        questionId: "Q1",
+const SAMPLE_QUESTION_ANSWER = {
+    Q1: {
         question: "General Questions",
         answer: {
             cin: "TESTCIN123",
@@ -21,8 +20,7 @@ const SAMPLE_QUESTION_ANSWER = [
             },
         },
     },
-    {
-        questionId: "Q2",
+    Q2: {
         question:
             "Number of locations where plants and operations or offices of the entity are situated.",
         answer: {
@@ -36,13 +34,11 @@ const SAMPLE_QUESTION_ANSWER = [
             },
         },
     },
-    {
-        questionId: "Q3",
+    Q3: {
         question: "Brief on types of customers",
         answer: { typeOfCustomers: ["TYPE1", "TYPEX"] },
     },
-    {
-        questionId: "Q4",
+    Q4: {
         question: "Details of employees and workers.",
         answer: {
             all: {
@@ -91,8 +87,7 @@ const SAMPLE_QUESTION_ANSWER = [
             },
         },
     },
-    {
-        questionId: "Q5",
+    Q5: {
         question:
             "Is there a mechanism available to receive and redress grievances",
         answer: {
@@ -114,6 +109,6 @@ const SAMPLE_QUESTION_ANSWER = [
             },
         },
     },
-]
+}
 
 module.exports = { SAMPLE_QUESTION_ANSWER }
