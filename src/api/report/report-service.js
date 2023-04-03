@@ -1,7 +1,10 @@
 const moment = require("moment")
 
 const { database } = require("../../database/database-client")
-const { validatePostReportRequestData } = require("./report-helper")
+const {
+    validatePostReportRequestData,
+    computeServerSideInfo,
+} = require("./report-helper")
 
 const postReport = async (req, res) => {
     let reportId = req.body.reportId
@@ -14,6 +17,8 @@ const postReport = async (req, res) => {
         answer
     )
 
+    const computerAnswer = computeServerSideInfo(questionId, answer)
+
     if (!validatePostReportResult.status) {
         return res
             .status(400)
@@ -21,7 +26,7 @@ const postReport = async (req, res) => {
     }
 
     const report = validatePostReportResult.report
-    report.data[questionId.toUpperCase()] = answer
+    report.data[questionId.toUpperCase()] = computerAnswer
     report.username = username
     report.updatedAt = moment().toISOString(true)
 
